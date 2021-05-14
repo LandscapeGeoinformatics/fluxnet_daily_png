@@ -1,4 +1,4 @@
-# University of Tartu Fluxnet tower data graphs
+# Fluxnet tower HF data graphs
 
 ![](https://storage.googleapis.com/geo-assets/fluxnet/today_and_yesterday_Palo_ClearCut_PaloclearHFdata_CO2_dry_Avg.png)
 
