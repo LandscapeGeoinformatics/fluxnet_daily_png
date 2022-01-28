@@ -149,3 +149,5 @@ cython_debug/
 tables.conf
 images/*.png
 LTOM_SQL.ipynb
+geoadmin.fluxdailyscript.sh
+
