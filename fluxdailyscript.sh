@@ -59,9 +59,9 @@ for param in WindSpeed_Z Wind_Temperature AD_CH4 AD_N20 CO2_DryMoleFractions H2O
 
 done
 
-# Palo_Forest_FluxHFdata - WindSpeed_Z  Wind_Temperature CO2  H2O
+# Palo_Forest_II_FluxHFdata - WindSpeed_Z  Wind_Temperature CO2  H2O
 for param in WindSpeed_Z Wind_Temperature CO2 H2O; do
-    station=Palo_Forest_FluxHFdata
+    station=Palo_Forest_II_FluxHFdata
 
     if [ $SHORT_LONG = 2 ]; then
         /opt/anaconda/miniconda/envs/geopy2020/bin/papermill fluxnet_scripted.ipynb - -p days_back 3 -p include_now 0 -p parameter ${param} -p station_table ${station} -p filename_def three_days_back_${station}_${param}

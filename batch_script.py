@@ -230,7 +230,7 @@ if __name__ == "__main__":
             "CO2_DryMoleFractions",
             "H2O_DryMoleFractions",
         ],
-        "Palo_Forest_FluxHFdata": ["WindSpeed_Z", "Wind_Temperature", "CO2", "H2O"],
+        "Palo_Forest_II_FluxHFdata": ["WindSpeed_Z", "Wind_Temperature", "CO2", "H2O"],
         "Palo_ClearCut_PaloclearHFdata": [
             "CO2_dry_Avg",
             "H2O_dry_Avg",
