@@ -7,7 +7,6 @@ import pyodbc
 import get_conf
 from datetime import timedelta, date, datetime
 import pandas as pd
-import os
 import xarray as xr
 import dask
 import matplotlib.pyplot as plt
@@ -59,7 +58,7 @@ def actual_plot(
 
     outfilename = f"{filename_pref}.png"
 
-    if log == True:
+    if log is True:
         print(a)
         print(b)
         print(outfilename)
@@ -71,7 +70,7 @@ def actual_plot(
 
     sql_query = f"SELECT {param}, TmStamp FROM {table} WHERE TmStamp >= '{from_ts}' AND TmStamp <= '{to_ts}'"
 
-    if log == True:
+    if log is True:
         print(sql_query)
 
     df = (
@@ -84,7 +83,7 @@ def actual_plot(
 
     if len(df) <= 0:
         error_msg = f"sql query returned zero elements - must skip ({sql_query})"
-        if log == True:
+        if log is True:
             print(error_msg)
         return (1, error_msg)
 
@@ -97,7 +96,7 @@ def actual_plot(
     vmin = qr_min - iqrx * 1.5
     vmax = qr_max + iqrx * 1.5
 
-    if log == True:
+    if log is True:
         print(f"vmin {vmin} vmax {vmax}")
 
     dset = xr.Dataset.from_dataframe(df)
@@ -213,7 +212,7 @@ def main(stat_param, SHORT_LONG, CACHE_DIRECTIVE, log=False):
     for res_d in results:
         if "out" in res_d.keys():
             if res_d["exec"] is not None and res_d["exec"] != 0:
-                print(f"There was an error: ")
+                print("There was an error: ")
                 print(pprint.pprint(res_d))
     return 0
 
@@ -230,12 +229,23 @@ if __name__ == "__main__":
             "CO2_DryMoleFractions",
             "H2O_DryMoleFractions",
         ],
-        "Palo_Forest_II_FluxHFdata": ["WindSpeed_Z", "Wind_Temperature", "CO2", "H2O"],
+        "Palo_Forest_II_FluxHFdata": [
+            "WindSpeed_Z",
+            "Wind_Temperature",
+            "CO2",
+            "H2O"
+        ],
         "Palo_ClearCut_PaloclearHFdata": [
             "CO2_dry_Avg",
             "H2O_dry_Avg",
             "Aux_3_Avg",
             "Aux_4_Avg",
+        ],
+        "Agali_CC_HFdata": [
+            "Aux_3_Avg",
+            "Aux_4_Avg",
+            "CO2_DRY__Avg",
+            "H2O_DRY__Avg",
         ],
     }
 
@@ -245,7 +255,7 @@ if __name__ == "__main__":
     SHORT_LONG = 1
     LOG = False
 
-    print(f"Hello work: " + ",".join(sys.argv))
+    print("Hello work: " + ",".join(sys.argv))
 
     if "long" in sys.argv:
         SHORT_LONG = 2
